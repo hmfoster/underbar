@@ -1,7 +1,6 @@
-(function() {
   'use strict';
 
-  window._ = {};
+  var _ = {};
 
   // Returns whatever value is passed as the argument. This function doesn't
   // seem very useful, but remember it--if a function needs to provide an
@@ -38,6 +37,9 @@
   // Like first, but for the last elements. If n is undefined, return just the
   // last element.
   _.last = function(array, n) {
+    var length = array.length;
+    n > length ? n = length : n = n;
+    return n === undefined ? array[length-1] : array.slice(length-n, n+1);
   };
 
   // Call iterator(value, key, collection) for each element of collection.
@@ -298,4 +300,4 @@
   // Note: This is difficult! It may take a while to implement.
   _.throttle = function(func, wait) {
   };
-}());
+module.exports = _;
