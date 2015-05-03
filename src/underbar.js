@@ -82,7 +82,7 @@
   _.filter = function(collection, test) {
     var filtered = []; 
     _.each(collection, function(item){
-      if (test(item) == true){
+      if (test(item)){
         filtered.push(item);
       }
     }); 
@@ -161,6 +161,7 @@
   //   }); // should be 5, regardless of the iterator function passed in
   //          No accumulator is given so the first element is used.
   _.reduce = function(collection, iterator, accumulator) {
+
   };
 
   // Determine if the array or object contains a given value (using `===`).
