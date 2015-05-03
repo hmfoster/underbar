@@ -1,10 +1,5 @@
-(function() { //delete for node testing
+(function() { 
   'use strict';
-/*  var _ = require('../src/underbar.js');
-  var chai = require('chai')
-  var sinon = require('sinon')
-  var expect = chai.expect;
-*/
   describe('Part I', function() {
 
     describe('identity', function() {
@@ -271,4 +266,4 @@
 
     });
   });
-}()); //delete for node
+}());

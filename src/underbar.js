@@ -1,7 +1,7 @@
-(function() { //delete for node test
+(function() {
     'use strict';
 
-  window._ = {}; //change to just var _ for node testing, window._ else
+  window._ = {};
 
   // Returns whatever value is passed as the argument. This function doesn't
   // seem very useful, but remember it--if a function needs to provide an
@@ -340,5 +340,4 @@
   // Note: This is difficult! It may take a while to implement.
   _.throttle = function(func, wait) {
   };
-}()); //delete for node testing
-// module.exports = _; // add for node testing 
+}()); 
