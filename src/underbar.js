@@ -55,8 +55,8 @@
       }
     }
     else{
-      for (i in collection){
-        iterator(collection[i], i, collection);
+      for (var key in collection){
+        iterator(collection[key], key, collection);
       }
     }
   };
