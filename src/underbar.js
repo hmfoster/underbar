@@ -311,7 +311,7 @@
   // The arguments for the original function are passed after the wait
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
-  _.delay = function(func, wait) {`
+  _.delay = function(func, wait) {
     return setTimeout.apply(this, arguments);;
   };
 
@@ -327,6 +327,12 @@
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+    var newArr = array.slice(0,array.length), shuffled = [], i;
+    while (newArr[0]){
+        i = Math.floor(Math.random()*newArr.length);
+        shuffled.push(newArr[i]);
+        newArr.splice(i,1);
+    }; return shuffled;
   };
 
 
