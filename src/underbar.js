@@ -74,7 +74,6 @@
         result = index;
       }
     });
-
     return result;
   };
 
@@ -190,10 +189,7 @@
       if (!wasTrue){
         return false;
       }
-      if (iterator == undefined){
-        return Boolean(item);
-      };
-      return Boolean(iterator(item));
+      return (iterator) ? !!iterator(item) : !!item;
     }, true)
   };
 
@@ -201,15 +197,10 @@
   // provided, provide a default one
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
-    return _.reduce(collection, function(wasTrue, item){
-      if (wasTrue){
-        return true;
-      }
-      if (iterator == undefined){
-        return Boolean(item);
-      };
-      return Boolean(iterator(item));
-    }, false)
+	return !_.every(collection, function(value) {             
+		return (iterator) ? !iterator(value): !value;     
+	});
+	
   };
 
 
