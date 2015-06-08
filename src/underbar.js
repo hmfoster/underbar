@@ -351,9 +351,24 @@ _.invoke = function(collection, functionOrKey, args) {
   // of that string. For example, _.sortBy(people, 'name') should sort
   // an array of people by their name.
   _.sortBy = function(collection, iterator) {
-  	return collection.sort(function(a, b){
-  		return a.iterator
-  	})
+  	var newList;
+  	if (typeof iterator == "string"){
+	  	newList = collection.sort(function(a, b){
+	  		if (a[iterator] > b[iterator]){
+	  			return 1;
+	  		} else if (a[iterator] === undefined){
+	  			return -1;
+	  		} 
+	  		else if (a[iterator] < b[iterator]){
+	  			return -1;
+	  		} return 0;
+	  	});
+	  } else {
+	  	newList = collection.sort(function(a, b){
+	  		return iterator(a) > iterator(b);
+	  	});
+	  }
+	  	return newList;
   };
 
   // Zip together two or more arrays with elements of the same index
