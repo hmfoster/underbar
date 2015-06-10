@@ -377,6 +377,25 @@ _.invoke = function(collection, functionOrKey, args) {
   // Example:
   // _.zip(['a','b','c','d'], [1,2,3]) returns [['a',1], ['b',2], ['c',3], ['d',undefined]]
   _.zip = function() {
+    var zipped = [];
+    var longest = [];
+    var args = _.map(arguments, function(val){
+      return val;
+    });
+    _.each(args, function(argument){
+      if (argument.length>longest.length){
+          longest = argument;
+      }});
+    for (var i = 0; i < longest.length; i++) {
+      var nextZip = [];
+      for (var j = 0; j < args.length; j++) {
+        if (i > args[j].length-1){
+          nextZip.push(undefined);
+        } else{
+          nextZip.push(args[j][i]);
+        }
+      } zipped.push(nextZip)
+    } return zipped
   };
 
   // Takes a multidimensional array and converts it to a one-dimensional array.
