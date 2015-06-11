@@ -403,6 +403,14 @@ _.invoke = function(collection, functionOrKey, args) {
   //
   // Hint: Use Array.isArray to check if something is an array
   _.flatten = function(nestedArray, result) {
+    var newArr = result || [];
+    for (var i = 0; i < nestedArray.length; i++) {
+      if (Array.isArray(nestedArray[i])){
+        _.flatten(nestedArray[i], newArr);
+      } else{
+        newArr.push(nestedArray[i]);
+      }
+    } return newArr;
   };
 
   // Takes an arbitrary number of arrays and produces an array that contains
