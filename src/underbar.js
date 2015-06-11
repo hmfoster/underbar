@@ -431,6 +431,20 @@ _.invoke = function(collection, functionOrKey, args) {
   // Take the difference between one array and a number of other arrays.
   // Only the elements present in just the first array will remain.
   _.difference = function(array) {
+    var newArr = [];
+    var base = arguments[0];
+    var others = [];
+    for (var i = 1; i < arguments.length; i++) {
+      others.push(arguments[i]);
+    }
+    var test = function(item){
+           return !_.contains(item, base[j]);
+       };
+    for (var j = 0; j < base.length; j++) {
+      if (_.every(others, test)){
+        newArr.push(base[j]);
+      }
+    } return newArr;
   };
 
   // Returns a function, that, when invoked, will only be triggered at most once
