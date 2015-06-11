@@ -416,6 +416,16 @@ _.invoke = function(collection, functionOrKey, args) {
   // Takes an arbitrary number of arrays and produces an array that contains
   // every item shared between all the passed-in arrays.
   _.intersection = function() {
+    var newArr = [];
+    var base = arguments[0];
+    var test = function(item){
+           return _.contains(item, base[i]);
+       };
+    for (var i = 0; i < base.length; i++) {
+      if (_.every(arguments, test)){
+        newArr.push(base[i]);
+      }
+    } return newArr;
   };
 
   // Take the difference between one array and a number of other arrays.
