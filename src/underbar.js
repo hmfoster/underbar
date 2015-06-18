@@ -38,9 +38,8 @@
   // Like first, but for the last elements. If n is undefined, return just the
   // last element.
   _.last = function(array, n) {
-    var length = array.length;
-    n > length ? n = length : n = n;
-    return n === undefined ? array[length-1] : array.slice(length-n, n+1);
+    var reversed = _.first(array.reverse(), n);
+    return typeof reversed === "number"? reversed: reversed.reverse();
   };
 
   // Call iterator(value, key, collection) for each element of collection.
@@ -453,5 +452,17 @@ _.invoke = function(collection, functionOrKey, args) {
   //
   // Note: This is difficult! It may take a while to implement.
   _.throttle = function(func, wait) {
+    var waiting = false;
+    return function(){
+      if (!waiting){
+        var context = this;
+        var args = arguments;
+        func.apply(this, arguments);
+        waiting = true;
+        setTimeout(function(){
+          waiting = true;
+        }, wait);
+      }
+    };
   };
 }()); 
