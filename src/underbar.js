@@ -320,9 +320,7 @@
     var newArr = array.slice(0,array.length), shuffled = [], i;
     while (newArr[0]){
         i = Math.floor(Math.random()*newArr.length);
-        // shuffled.push(newArr[i]);
         shuffled.push(newArr.splice(i,1)[0]);
-        // newArr.splice(i,1);
     }; return shuffled;
   };
 
@@ -353,22 +351,14 @@ _.invoke = function(collection, functionOrKey, args) {
   _.sortBy = function(collection, iterator) {
   	var newList;
   	if (typeof iterator == "string"){
-	  	newList = collection.sort(function(a, b){
-	  		if (a[iterator] > b[iterator]){
-	  			return 1;
-	  		} else if (a[iterator] === undefined){
-	  			return -1;
-	  		} 
-	  		else if (a[iterator] < b[iterator]){
-	  			return -1;
-	  		} return 0;
-	  	});
-	  } else {
-	  	newList = collection.sort(function(a, b){
+	  	return collection.sort(function(a, b){
+        return a[iterator] > b[iterator];
+      });
+    } else {
+	  	return collection.sort(function(a, b){
 	  		return iterator(a) > iterator(b);
 	  	});
 	  }
-	  	return newList;
   };
 
   // Zip together two or more arrays with elements of the same index
