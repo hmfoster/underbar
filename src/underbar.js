@@ -187,7 +187,7 @@
       if (!wasTrue){
         return false;
       }
-      return (iterator) ? !!iterator(item) : !!item;
+      return iterator ? !!iterator(item) : !!item;
     }, true)
   };
 
@@ -195,10 +195,9 @@
   // provided, provide a default one
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
-	return !_.every(collection, function(value) {             
-		return (iterator) ? !iterator(value): !value;     
-	});
-	
+    return !_.every(collection, function(value) { 
+      return iterator ? !iterator(value): !value; 
+    });
   };
 
 
@@ -232,7 +231,7 @@
   // Like extend, but doesn't ever overwrite a key that already
   // exists in obj
   _.defaults = function(obj) {
-      _.each(arguments, function(item){
+    _.each(arguments, function(item){
       _.each(item, function(value, key){
         if (!(key in obj)){
           obj[key] = value;
@@ -285,7 +284,9 @@
   _.memoize = function(func) {
     var cache = {}, result, args;
     return function(){
-        args = _.map(arguments, function(val){return val;})
+        args = _.map(arguments, function(val){
+          return val;
+        });
         if (!(args in cache)){
           result = func.apply(this, arguments);
           cache[args] = result;
@@ -319,8 +320,9 @@
     var newArr = array.slice(0,array.length), shuffled = [], i;
     while (newArr[0]){
         i = Math.floor(Math.random()*newArr.length);
-        shuffled.push(newArr[i]);
-        newArr.splice(i,1);
+        // shuffled.push(newArr[i]);
+        shuffled.push(newArr.splice(i,1)[0]);
+        // newArr.splice(i,1);
     }; return shuffled;
   };
 
