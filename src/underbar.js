@@ -98,7 +98,7 @@
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
-    var simple = []
+    var simple = [];
     for (var i = 0; i<array.length; i++){
       if (_.indexOf(simple, array[i]) === -1){
         simple.push(array[i]);
@@ -188,14 +188,14 @@
         return false;
       }
       return iterator ? !!iterator(item) : !!item;
-    }, true)
+    }, true);
   };
 
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
-    return !_.every(collection, function(value) { 
+    return !_.every(collection, function(value){ 
       return iterator ? !iterator(value): !value; 
     });
   };
@@ -235,7 +235,7 @@
       _.each(item, function(value, key){
         if (!(key in obj)){
           obj[key] = value;
-        };
+        }
       });
    });
      return obj;
@@ -290,7 +290,7 @@
         if (!(args in cache)){
           result = func.apply(this, arguments);
           cache[args] = result;
-        };
+        }
         return cache[args];
       };
   };
@@ -302,7 +302,7 @@
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
   _.delay = function(func, wait) {
-    return setTimeout.apply(this, arguments);;
+    return setTimeout.apply(this, arguments);
   };
 
 
@@ -321,7 +321,7 @@
     while (newArr[0]){
         i = Math.floor(Math.random()*newArr.length);
         shuffled.push(newArr.splice(i,1)[0]);
-    }; return shuffled;
+    } return shuffled;
   };
 
 
@@ -384,8 +384,8 @@ _.invoke = function(collection, functionOrKey, args) {
         } else{
           nextZip.push(args[j][i]);
         }
-      } zipped.push(nextZip)
-    } return zipped
+      } zipped.push(nextZip);
+    } return zipped;
   };
 
   // Takes a multidimensional array and converts it to a one-dimensional array.
